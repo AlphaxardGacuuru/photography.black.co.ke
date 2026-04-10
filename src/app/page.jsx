@@ -1,11 +1,11 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { Camera, Clapperboard, Pause, Play, Sparkles } from "lucide-react"
 
 import Btn from "@/components/ui/button"
+import LoadingImage from "@/components/ui/loading-image"
 import {
 	Carousel,
 	CarouselContent,
@@ -147,11 +147,13 @@ const HomePage = () => {
 								key={slide.image}
 								className="pl-0">
 								<div className="relative h-[70svh] min-h-[560px] w-full">
-									<Image
+									<LoadingImage
 										src={slide.image}
 										alt={slide.title}
 										fill
 										priority={slide.image === heroSlides[0].image}
+										wrapperClassName="h-full w-full"
+										overlayClassName="z-[1]"
 										className="z-0 object-cover object-center"
 										sizes="100vw"
 									/>
@@ -263,18 +265,19 @@ const HomePage = () => {
 				</div>
 			</section>
 
-			<section className="border-y border-[#d4b06a]">
+			<section className="border-y border-[#d4b06a] bg-[#d2ad63]/20">
 				<div className="mx-auto grid max-w-7xl gap-0 lg:grid-cols-2">
 					<div className="relative min-h-[420px]">
-						<Image
+						<LoadingImage
 							src="/img/bg-img/Me-3.jpg"
 							alt="Portrait of Al"
 							fill
+							wrapperClassName="h-full w-full"
 							className="object-cover"
 							sizes="(max-width: 1024px) 100vw, 50vw"
 						/>
 					</div>
-					<div className="relative flex items-center overflow-hidden border-l border-white/40 bg-[#d2ad63]/20 px-6 py-16 backdrop-blur-2xl ring-1 ring-inset ring-[#d5b26d]/50 shadow-[0_24px_50px_rgba(168,125,58,0.2)] sm:px-10 lg:px-14">
+					<div className="relative flex items-center overflow-hidden border-l border-white/40 px-6 py-16 backdrop-blur-2xl sm:px-10 lg:px-14">
 						<div className="pointer-events-none absolute inset-0 bg-white/18" />
 						<div className="relative z-10 max-w-xl space-y-6">
 							<p className="text-sm uppercase tracking-[0.35em] text-[#ffc862]">
@@ -375,10 +378,11 @@ const HomePage = () => {
 								href="/portfolio"
 								className="group relative block overflow-hidden rounded-[1.75rem] border border-[#d5b26d] bg-[#fff9f2]">
 								<div className="relative aspect-[4/5]">
-									<Image
+									<LoadingImage
 										src={image}
 										alt={`Portfolio preview ${index + 1}`}
 										fill
+										wrapperClassName="h-full w-full"
 										className="object-cover transition duration-700 group-hover:scale-105"
 										sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
 									/>

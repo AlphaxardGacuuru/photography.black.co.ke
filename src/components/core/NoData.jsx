@@ -1,11 +1,11 @@
 import React from "react"
-import Image from "next/image"
+import LoadingImage from "@/components/ui/loading-image"
 
 const NoData = () => {
 	return (
 		<div className="bg-white/5 border border-white/10 text-center w-full py-8">
 			<div className="flex justify-center">
-				<Image
+				<LoadingImage
 					src="/img/no-data-found.jpg"
 					alt="No entries found"
 					width={400}

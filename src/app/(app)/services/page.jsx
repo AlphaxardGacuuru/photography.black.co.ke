@@ -1,616 +1,219 @@
-/** @format */
+import Link from "next/link"
+import {
+	Camera,
+	Clapperboard,
+	Gem,
+	Gift,
+	Sparkles,
+	Users,
+	Video,
+} from "lucide-react"
 
-import { Link } from "react-router-dom"
+import Btn from "@/components/ui/button"
+import LoadingImage from "@/components/ui/loading-image"
+
+const servicePackages = [
+	{
+		title: "Wedding Photography Budget",
+		price: "Ksh 50,000",
+		icon: Camera,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(34,30,25,0.62),rgba(212,176,106,0.2))] text-[#fffdf8]",
+		items: [
+			"2 photographers",
+			"250 edited photos",
+			"10 retouched photos",
+			"1 A3 mount",
+			"1 photo magazine",
+			"Flash disk",
+			"Free engagement shoot",
+		],
+		quote:
+			"A story should have a beginning, a middle and an end, but not necessarily in that order.",
+	},
+	{
+		title: "Wedding Photography Standard",
+		price: "Ksh 70,000",
+		icon: Clapperboard,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(16,35,54,0.6),rgba(212,176,106,0.22))] text-[#fffdf8]",
+		items: [
+			"Everything in budget",
+			"10 extra retouched photos",
+			"2 cinematographers",
+			"1 A2 mount",
+			"1 extra A3 mount",
+			"Video film: 40 mins to 1.5 hrs",
+			"Trailer: 6 to 12 mins",
+		],
+		quote: "If your pictures are not good enough, you are not close enough.",
+	},
+	{
+		title: "Wedding Photography Plus",
+		price: "Ksh 100,000",
+		icon: Sparkles,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(255,200,98,0.42),rgba(255,244,224,0.28))] text-[#221b12]",
+		items: [
+			"Everything in standard",
+			"10 more retouched photos",
+			"1 A1 mount",
+			"1 extra A2 mount",
+			"1 extra A3 mount",
+			"Drone coverage",
+		],
+		quote:
+			"Photographs capture a moment that is gone forever and impossible to reproduce.",
+	},
+]
+
+const addOnServices = [
+	{
+		title: "Ruracio Shoot",
+		price: "Ksh 10,000 off",
+		icon: Gift,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(120,20,40,0.68),rgba(180,60,80,0.32))] text-[#fffdf8]",
+		items: [
+			"Ksh 10,000 off any wedding package",
+			"Complimentary session",
+			"Coordinated with your wedding coverage",
+		],
+		quote: "The best thing to hold onto in life is each other.",
+	},
+	{
+		title: "Engagement Shoot",
+		price: "Ksh 10,000",
+		icon: Gem,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(200,30,100,0.58),rgba(240,100,150,0.28))] text-[#fffdf8]",
+		items: ["1 A3 mount", "30 edited photos", "30 retouched photos"],
+		quote: "Every great love story deserves to be told with care.",
+	},
+	{
+		title: "Family and Baby Bump Shoot",
+		price: "Ksh 10,000",
+		icon: Users,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(20,100,180,0.58),rgba(100,180,230,0.28))] text-[#fffdf8]",
+		items: ["1 A3 mount", "30 edited photos", "30 retouched photos"],
+		quote: "Family is not an important thing — it is everything.",
+	},
+	{
+		title: "Wedding Add-ons",
+		price: "From Ksh 20,000",
+		icon: Video,
+		accent:
+			"bg-[linear-gradient(160deg,rgba(34,30,25,0.62),rgba(212,176,106,0.2))] text-[#fffdf8]",
+		items: ["Drone coverage — Ksh 30,000", "Live streaming — Ksh 20,000"],
+		quote: "Every detail captured, every moment preserved.",
+	},
+]
+
+const terms = [
+	"Early booking of 2 weeks is recommended to secure the day.",
+	"Booking is confirmed with a 50% deposit and remaining 50% on D-day.",
+	"Get a KES 5,000 discount when you pay 80% deposit.",
+	"Content is delivered via a flash disk provided by me.",
+	"Wedding package add-ons attract an extra cost.",
+	"Delivery timelines: photos in 48 hours, videos in 2 weeks.",
+]
 
 const Services = () => {
 	return (
-		<div>
-			{/* <!-- ***** Hero Area Start ***** --> */}
-			<div className="row">
-				<div className="col-sm-6 p-0">
-					<img
-						src="img/bg-img/blog.jpg"
-						alt="creator"
-					/>
-				</div>
-				<div
-					className="col-sm-6"
-					style={{ backgroundColor: "#232323" }}>
-					<div className="mt-5 mb-5 hidden"></div>
-					<center>
-						<br />
-						<br />
-						<div className="d-flex justify-content-center mb-3">
-							<div className="p-2 ml-5 mr-5 hidden">Flex item 1</div>
-							<div className="p-5">
-								<div
-									className="m-3"
-									style={{ backgroundColor: "white", height: "1px" }}></div>
-								<h2 style={{ color: "white" }}>
-									I provide top quality services
-								</h2>
-								<p style={{ color: "white" }}>
-									I use proven principles of photography and cinematography and
-									add my personal touch to give you an experience like never
-									before, using new technology to enhance your event
-								</p>
-							</div>
-							<div className="p-2 ml-5 mr-5 hidden">Flex item 3</div>
+		<main className="bg-[linear-gradient(180deg,#faf6ef_0%,#f7f1e6_48%,#f8f3ea_100%)] text-[#2f2a24]">
+			<section className="border-b border-[#d4b06a] bg-[#d2ad63]/20">
+				<div className="mx-auto grid max-w-7xl lg:grid-cols-2">
+					<div className="relative min-h-[500px]">
+						<LoadingImage
+							src="/img/bg-img/blog.jpg"
+							alt="Wedding service session"
+							fill
+							priority
+							wrapperClassName="h-full w-full"
+							className="object-cover"
+							sizes="(max-width: 1024px) 100vw, 50vw"
+						/>
+					</div>
+					<div className="relative flex items-center overflow-hidden border-l border-white/40 bg-[#d2ad63]/22 px-6 py-16 backdrop-blur-2xl sm:px-10 lg:px-14">
+						<div className="pointer-events-none absolute inset-0 bg-white/18" />
+						<div className="relative z-10 max-w-xl space-y-6">
+							<p className="text-sm uppercase tracking-[0.35em] text-[#ffc862]">
+								Services
+							</p>
+							<h1 className="text-4xl font-semibold tracking-tight text-[#2d261f] sm:text-5xl">
+								Top-quality photography and videography services
+							</h1>
+							<p className="text-lg leading-8 text-[#5a4f42]">
+								I use proven photography and cinematography principles, then add
+								a personal touch to deliver an experience you will remember.
+							</p>
+							<Btn
+								asChild
+								variant="glass"
+								size="lg"
+								className="border-[#d2ad63]/80 bg-[#d2ad63]/24 text-[#c9973e] backdrop-blur-xl hover:bg-[#d2ad63]/34">
+								<Link href="/contact">Contact me</Link>
+							</Btn>
 						</div>
-						<Link
-							to="/contact"
-							className="btn sonar-btn white-btn">
-							contact me
-						</Link>
-						<br />
-						<br />
-						<br />
-					</center>
-				</div>
-			</div>
-			{/* <!-- ***** Hero Area End ***** --> */}
-
-			{/* <!-- ***** Services Area Start ***** --> */}
-			<div className="sonar-services-area section-padding-100-50">
-				<div className="container">
-					<div className="row">
-						{/* <!-- Wedding Photography Budget Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#232323", color: "white" }}
-								data-wow-delay="300ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-camera"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-											/>
-											<path
-												fill-rule="evenodd"
-												d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
-											/>
-											<path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-										</svg>
-									</span>
-									<h4 className="text-white">
-										Wedding Photography <br />
-										Budget
-									</h4>
-									<span>2 Photographers</span>
-									<br />
-									<span>250 Edited Photos</span>
-									<br />
-									<span>10 Retouched Photos</span>
-									<br />
-									<span>1 A3 Mount</span>
-									<br />
-									<span>1 Photo Magazine</span>
-									<br />
-									<span>Flash Disk</span>
-									<br />
-									<span>Free Engagement Shoot</span>
-									<br />
-									<br />
-									<h5 className="text-white">Ksh 50,000</h5>
-									<br />
-									<p className="text-white">
-										A story should have a beginning, a middle and an end… but
-										not necessarily in that order. – Jean-Luc Godard.
-									</p>
-								</center>
-							</div>
-						</div>
-						{/* <!-- Wedding Photography Budget Area End --> */}
-
-						{/* <!-- Wedding Photography Standard Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#102336", color: "white" }}
-								data-wow-delay="600ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-camera-video"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175l3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"
-											/>
-										</svg>
-									</span>
-									<h4 className="text-white">
-										Wedding Photography <br />
-										Standard
-									</h4>
-									<span>EVERYTHING IN BUDGET PLUS:</span>
-									<br />
-									<span>10 Retouched Photos (20 Total)</span>
-									<br />
-									<span>2 Cinematographers</span>
-									<br />
-									<span>1 A2 Mount</span>
-									<br />
-									<span>1 A3 Mount (2 Total)</span>
-									<br />
-									<span>Video (40mns-1.5hrs)</span>
-									<br />
-									<span>Trailer (6 - 12mns)</span>
-									<br />
-									<br />
-									<h5 className="text-white">Ksh 70,000</h5>
-									<br />
-									<p className="text-white">
-										“If your pictures are not good enough you are not close
-										enough.” ― Robert Capa
-									</p>
-								</center>
-							</div>
-						</div>
-						{/* <!-- Wedding Photography Standard Area End --> */}
-
-						{/* <!-- Wedding Photography Plus Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#FFC862" }}
-								data-wow-delay="300ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-camera-reels"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M0 8a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8zm11.5 5.175l3.5 1.556V7.269l-3.5 1.556v4.35zM2 7a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2z"
-											/>
-											<path
-												fill-rule="evenodd"
-												d="M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-											/>
-											<path
-												fill-rule="evenodd"
-												d="M9 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-											/>
-										</svg>
-									</span>
-									<h4>
-										Wedding Photography <br />
-										Plus
-									</h4>
-									<span>EVERYTHING IN STANDARD PLUS:</span>
-									<br />
-									<span>10 Retouched Photos (30 Total)</span>
-									<br />
-									<span>1 A1 Mount</span>
-									<br />
-									<span>1 A2 Mount (2 Total)</span>
-									<br />
-									<span>1 A3 Mount (3 Total)</span>
-									<br />
-									<span>Drone</span>
-									<br />
-									<br />
-									<h5>Ksh 100,000</h5>
-									<br />
-									<p
-										className="text-dark"
-										style={{ fontWeight: "300" }}>
-										“What i like about photographs is that they capture a moment
-										that’s gone forever, impossible to reproduce.” ― Karl
-										Lagerfeld.
-									</p>
-								</center>
-							</div>
-						</div>
-						{/* <!-- Wedding Photography Plus Area End --> */}
-
-						{/* <!-- Ruracio Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#914E3B" }}
-								data-wow-delay="300ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											class="bi bi-gift"
-											viewBox="0 0 16 16">
-											<path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A3 3 0 0 1 3 2.506zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43zM9 3h2.932l.023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0zM1 4v2h6V4zm8 0v2h6V4zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5z" />
-										</svg>
-									</span>
-									<h4>Ruracio Shoot</h4>
-									<span>Similar to Wedding Packages</span>
-									<br />
-									<br />
-									<h5>Ksh 10,000 off of each Wedding Package</h5>
-									<br />
-								</center>
-							</div>
-						</div>
-						{/* <!-- Ruracio Area End --> */}
-
-						{/* <!-- Engagement Shoot Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#fb3958" }}
-								data-wow-delay="900ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-gem"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785l-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004l.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495l5.062-.005L8 13.366 5.47 5.495zm-1.371-.999l-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l2.92-.003 2.193 6.82L1.5 5.5zm7.889 6.817l2.194-6.828 2.929-.003-5.123 6.831z"
-											/>
-										</svg>
-									</span>
-									<h4>Engagement Shoot</h4>
-									<span>1 A3 Mount</span>
-									<br />
-									<span>30 Edited and Retouched Photos</span>
-									<br />
-									<br />
-									<h5>Ksh 10,000</h5>
-									<br />
-								</center>
-							</div>
-						</div>
-						{/* <!-- Engagement Shoot Area End --> */}
-
-						{/* <!-- Family Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#81D9DD" }}
-								data-wow-delay="300ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-people"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"
-											/>
-										</svg>
-									</span>
-									<h4>Family Shoot</h4>
-									<span>1 A3 Mount</span>
-									<br />
-									<span>30 Edited and Retouched Photos</span>
-									<br />
-									<br />
-									<h5>Ksh 10,000</h5>
-									<br />
-								</center>
-							</div>
-						</div>
-						{/* <!-- Family Area End --> */}
-
-						{/* <!-- Baby Bump Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#FFC0CB" }}
-								data-wow-delay="600ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-person"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-											/>
-										</svg>
-									</span>
-									<h4>Baby Bump Shoot</h4>
-									<span>1 A3 Mount</span>
-									<br />
-									<span>30 Edited and Retouched Photos</span>
-									<br />
-									<br />
-									<h5>Ksh 10,000</h5>
-									<br />
-								</center>
-							</div>
-						</div>
-						{/* <!-- Baby Bump Area End --> */}
-
-						{/* <!-- Products Area --> */}
-						{/* <div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#914E3B" }}
-								data-wow-delay="600ms">
-								<center>
-									<span>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="50"
-											height="50"
-											fill="currentColor"
-											className="bi bi-bag"
-											viewBox="0 0 16 16">
-											<path
-												fill-rule="evenodd"
-												d="M8 1a2.5 2.5 0 0 0-2.5 2.5V4h5v-.5A2.5 2.5 0 0 0 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V5H2z"
-											/>
-										</svg>
-									</span>
-									<h4>Products</h4>
-									<span>A1 Mount - Ksh 4500</span>
-									<br />
-									<span>A2 Mount - Ksh 2500</span>
-									<br />
-									<span>A3 Mount - Ksh 1500</span>
-									<br />
-									<span>A4 Mount - Ksh 1000</span>
-									<br />
-									<span>A5 Mount - Ksh 500</span>
-									<br />
-									<span>Photo Magazine (40 pgs) - Ksh 10,000</span>
-									<br />
-									<span>Photo Magazine (20 pgs) - Ksh 8,000</span>
-									<br />
-									<br />
-								</center>
-							</div>
-						</div> */}
-
-						{/* <!-- Add-ons Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								style={{ backgroundColor: "#CFF56A" }}
-								data-wow-delay="600ms">
-								<center>
-									<h4>
-										Wedding Package <br />
-										Add-ons
-									</h4>
-									<h5>Drone - Ksh 30,000</h5>
-									<h5>Live Streaming - Ksh 20,000</h5>
-									<br />
-								</center>
-							</div>
-						</div>
-						{/* <!-- Add-ons Area End --> */}
-
-						{/* <!-- Terms and Details Area Start --> */}
-						<div className="col-12 col-md-6 col-lg-4">
-							<div
-								className="single-services-area wow fadeInUp card py-5 px-2"
-								data-wow-delay="600ms">
-								<center>
-									<h4>Terms and Details</h4>
-								</center>
-								<h6>
-									Early booking of 2 weeks is recommended to secure the day.
-								</h6>
-								<h6>
-									Booking is done by paying 50% of the total package cost and
-									the remaining 50% on D-day.
-								</h6>
-								<h6>Get KES 5000 discount when you pay 80% deposit.</h6>
-								<h6>
-									Content will be delivered via a Flash Disk provided by me.
-								</h6>
-								<h6>Wedding package add-ons are an extra cost.</h6>
-								<h6>Delivery:</h6>
-								<h6 className="ml-3">Photos - 48hrs.</h6>
-								<h6 className="ml-3">Videos - 2 weeks.</h6>
-							</div>
-						</div>
-						{/* <!-- Terms and Details Area End --> */}
 					</div>
 				</div>
-			</div>
-			{/* <!-- ***** Services Area End ***** --> */}
+			</section>
 
-			<div
-				className="sonar-testimonials-area bg-img"
-				style={{ backgroundImage: "url(img/bg-img/tes.jpg)" }}>
-				<div className="container-fluid">
-					<div className="row">
-						<div className="col-12 col-md-10 col-lg-7">
-							<div className="testimonial-content bg-white">
-								<div className="section-heading text-left">
-									<div className="line"></div>
-									{/* <h2>Testimonials</h2>
+			<section className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
+				<div className="mb-10 space-y-3">
+					<p className="text-sm uppercase tracking-[0.35em] text-[#ffc862]">
+						Packages
+					</p>
+					<h2 className="text-3xl font-semibold tracking-tight text-[#2d261f] sm:text-5xl">
+						Coverage options for different celebrations
+					</h2>
+				</div>
+				<div className="grid gap-6 lg:grid-cols-3">
+					{[...servicePackages, ...addOnServices].map((service) => {
+						const Icon = service.icon
+
+						return (
+							<article
+								key={service.title}
+								tabIndex={0}
+								className={`service-card rounded-[2rem] border border-[#d5b26d] p-8 backdrop-blur-xl shadow-[0_24px_46px_rgba(160,120,54,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d5b26d]/45 focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7f1e6] ${service.accent}`}>
+								<Icon className="service-card-icon mb-6 h-10 w-10" />
+								<h3 className="service-card-title text-2xl font-semibold leading-tight">
+									{service.title}
+								</h3>
+								<ul className="mt-6 space-y-3 text-sm uppercase tracking-[0.16em] opacity-90">
+									{service.items.map((item) => (
+										<li key={item}>{item}</li>
+									))}
+								</ul>
+								<div className="mt-8 border-t border-[#ddc08d] pt-6">
+									<p className="text-2xl font-semibold">{service.price}</p>
+									<p className="mt-3 text-sm leading-7 opacity-85">
+										{service.quote}
+									</p>
 								</div>
+							</article>
+						)
+					})}
+				</div>
+			</section>
 
-								<div className="testimonial-slides owl-carousel">
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div>
-
-									<div className="single-tes-slide">
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque. Fusce sagittis suscipit sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel tortor facilisis, volutpat nulla placerat, tincidunt mi. Nullam vel orci dui. Suspendisse sit amet laoreet neque.</p>
-										<h6>Maria Smith, Bride</h6>
-									</div> */}
-								</div>
-							</div>
-						</div>
+			<section className="border-y border-[#d4b06a] bg-[#f3eadf]">
+				<div className="mx-auto max-w-7xl px-6 py-20 sm:px-8">
+					<div className="rounded-[2rem] border border-[#d5b26d] bg-[#fff9ef] p-8 shadow-[0_16px_40px_rgba(160,120,54,0.12)]">
+						<h3 className="text-2xl font-semibold text-[#2d261f]">
+							Terms and details
+						</h3>
+						<ul className="mt-5 space-y-3 text-sm leading-7 text-[#5a4f42]">
+							{terms.map((term) => (
+								<li key={term}>• {term}</li>
+							))}
+						</ul>
 					</div>
 				</div>
-			</div>
-
-			<div className="cool-facts-area section-padding-100-0">
-				<div className="container">
-					<div className="row align-items-center">
-						{/* <!-- Single Cool Fact--> */}
-						<div className="col-12 col-sm-6 col-lg-3">
-							<div
-								className="single-cool-fact-area text-center mb-100 wow fadeInUpBig"
-								data-wow-delay="250ms">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="80"
-									height="80"
-									fill="currentColor"
-									className="bi bi-person"
-									viewBox="0 0 16 16">
-									<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-								</svg>
-								<h2>
-									<span className="counter">61</span>
-								</h2>
-								<h6>Happy Brides</h6>
-							</div>
-						</div>
-						{/* <!-- Single Cool Fact--> */}
-						<div className="col-12 col-sm-6 col-lg-3">
-							<div
-								className="single-cool-fact-area text-center mb-100 wow fadeInUpBig"
-								data-wow-delay="500ms">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="80"
-									height="80"
-									fill="currentColor"
-									className="bi bi-laptop"
-									viewBox="0 0 16 16">
-									<path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z" />
-								</svg>
-								<h2>
-									<span className="counter">100</span>
-								</h2>
-								<h6>Hours of video editing</h6>
-							</div>
-						</div>
-						{/* <!-- Single Cool Fact--> */}
-						<div className="col-12 col-sm-6 col-lg-3">
-							<div
-								className="single-cool-fact-area text-center mb-100 wow fadeInUpBig"
-								data-wow-delay="750ms">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="80"
-									height="80"
-									fill="currentColor"
-									className="bi bi-images"
-									viewBox="0 0 16 16">
-									<path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-									<path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2zM14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1zM2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1h-10z" />
-								</svg>
-								<h2>
-									<span className="counter">1400</span>
-								</h2>
-								<h6>Edited Photos</h6>
-							</div>
-						</div>
-						{/* <!-- Single Cool Fact--> */}
-						<div className="col-12 col-sm-6 col-lg-3">
-							<div
-								className="single-cool-fact-area text-center mb-100 wow fadeInUpBig"
-								data-wow-delay="1000ms">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									width="80"
-									height="80"
-									fill="currentColor"
-									className="bi bi-cup"
-									viewBox="0 0 16 16">
-									<path d="M1 2a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1h.5A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-.55a2.5 2.5 0 0 1-2.45 2h-8A2.5 2.5 0 0 1 1 12.5V2zm13 10h.5a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5H14v8zM13 2H2v10.5A1.5 1.5 0 0 0 3.5 14h8a1.5 1.5 0 0 0 1.5-1.5V2z" />
-								</svg>
-								<h2>
-									<span className="counter">120</span>
-								</h2>
-								<h6>Teas a month</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			{/* <!-- ***** Call to Action Area Start ***** --> */}
-			<div className="sonar-call-to-action-area bg-gray section-padding-100">
-				<div className="container">
-					<div className="row">
-						<div className="col-12">
-							<div className="call-to-action-content">
-								<h2>I'm an experienced photographer and videographer</h2>
-								<h5>Let’s talk</h5>
-								<Link
-									to="/contact"
-									className="btn sonar-btn mt-100">
-									contact me
-								</Link>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			{/* <!-- ***** Call to Action Area End ***** --></br> */}
-		</div>
+			</section>
+		</main>
 	)
 }
 

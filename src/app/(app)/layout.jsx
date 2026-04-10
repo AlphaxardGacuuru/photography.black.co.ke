@@ -1,23 +1,15 @@
-'use client'
+"use client"
 
-import { useAuth } from '@/hooks/auth'
-import Navigation from '@/app/Navigation'
-import Loading from '@/app/(app)/Loading'
+import Navigation from "@/app/Navigation"
 
 const AppLayout = ({ children }) => {
-    const { user } = useAuth({ middleware: 'auth' })
+	return (
+		<div className="min-h-screen">
+			<Navigation />
 
-    if (!user) {
-        return <Loading />
-    }
-
-    return (
-        <div className="min-h-screen">
-            <Navigation user={user} />
-
-            <main>{children}</main>
-        </div>
-    )
+			<main>{children}</main>
+		</div>
+	)
 }
 
 export default AppLayout
