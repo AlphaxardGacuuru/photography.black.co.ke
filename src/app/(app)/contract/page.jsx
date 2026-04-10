@@ -1,3 +1,4 @@
+import ApplicationLogo from "@/components/ApplicationLogo"
 import Btn from "@/components/ui/button"
 import LoadingImage from "@/components/ui/loading-image"
 
@@ -7,13 +8,7 @@ const Contract = () => {
 			<section className="mx-auto max-w-4xl px-6 py-16 sm:px-8">
 				<div className="rounded-[2rem] border border-[#d5b26d] bg-[linear-gradient(160deg,rgba(255,200,98,0.24),rgba(255,247,235,0.96))] p-8 shadow-[0_24px_46px_rgba(160,120,54,0.18)] sm:p-10">
 					<div className="mb-8 flex flex-col items-center text-center">
-						<LoadingImage
-							src="/img/bg-img/havi logos-1.png"
-							alt="Black Photography logo"
-							width={260}
-							height={90}
-							className="h-auto w-[220px] sm:w-[260px]"
-						/>
+						<ApplicationLogo />
 						<p className="mt-5 text-sm uppercase tracking-[0.35em] text-[#ffc862]">
 							Contract
 						</p>
