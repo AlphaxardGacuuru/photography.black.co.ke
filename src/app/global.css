@@ -1,0 +1,409 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations for enhanced effects */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes float {
+
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes glow {
+
+	0%,
+	100% {
+		box-shadow: 0 0 5px rgba(35, 35, 35, 0.3);
+	}
+
+	50% {
+		box-shadow: 0 0 20px rgba(35, 35, 35, 0.6), 0 0 30px rgba(35, 35, 35, 0.4);
+	}
+}
+
+.animate-fade-in {
+	animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-float {
+	animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+	animation: glow 2s ease-in-out infinite;
+}
+
+.animation-delay-1000 {
+	animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+	animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+	animation-delay: 3s;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-radial {
+	background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+.mysonar-btn {
+	position: relative;
+	z-index: 1;
+	/* min-width: 90px; */
+	height: 33px;
+	border: 1px solid;
+	border-color: #232323;
+	text-transform: uppercase;
+	color: #232323;
+	font-size: 12px;
+	font-weight: 300;
+	letter-spacing: 1px;
+	line-height: 32px;
+	padding: 0 10px;
+	/* background-color: #ffffff; */
+	/* border-radius: 20px; */
+	border-radius: 0px;
+}
+
+.mysonar-btn:hover,
+.mysonar-btn:focus {
+	background-color: #2f2f2f;
+	font-size: 12px;
+	color: #ffffff;
+}
+
+.mysonar-btn.btn-2 {
+	background-color: #232323;
+	font-size: 12px;
+	color: #fff;
+}
+
+.mysonar-btn.btn-white {
+	background-color: #232323;
+	border-color: rgba(255, 255, 255, 1);
+	color: #fff;
+}
+
+.mysonar-btn.btn-green {
+	background-color: rgba(24, 180, 84, 1);
+	border-color: rgba(24, 180, 84, 1);
+	color: #fff;
+}
+
+.mysonar-btn.btn-yellow {
+	background-color: rgba(255, 180, 0, 1);
+	border-color: rgba(255, 180, 0, 1);
+	color: #fff;
+}
+
+.mysonar-btn.btn-red {
+	background-color: rgb(220, 53, 69);
+	border-color: rgb(220, 53, 69);
+	color: #fff;
+}
+
+.mysonar-sm {
+	font-size: 9px !important;
+	height: 25px;
+	line-height: 24px;
+}
+
+.mysonar-sm:hover,
+.mysonar-sm:focus {
+	background-color: #2f2f2f;
+	font-size: 9px;
+	color: #ffffff;
+}
+
+@keyframes titleWaveSweep {
+	0% {
+		opacity: 0;
+		transform: translateX(-135%) skewX(-20deg) scaleX(1.1);
+	}
+
+	18% {
+		opacity: 0.38;
+	}
+
+	72% {
+		opacity: 0.28;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(165%) skewX(-20deg) scaleX(0.35);
+	}
+}
+
+@keyframes cardSheenSweep {
+	0% {
+		opacity: 0;
+		transform: translateX(-140%) skewX(-18deg);
+	}
+
+	15% {
+		opacity: 0.18;
+	}
+
+	65% {
+		opacity: 0.14;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(170%) skewX(-18deg);
+	}
+}
+
+.what-i-do-card {
+	position: relative;
+	isolation: isolate;
+	outline: none;
+	transition:
+		transform 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		box-shadow 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		border-color 300ms ease,
+		background-color 300ms ease;
+}
+
+.what-i-do-card::before {
+	content: "";
+	position: absolute;
+	inset: -10% 0;
+	width: 40%;
+	background: rgba(255, 233, 184, 0.2);
+	filter: blur(12px);
+	pointer-events: none;
+	opacity: 0;
+	z-index: 1;
+	transform: translateX(-140%) skewX(-18deg);
+}
+
+.what-i-do-card:hover,
+.what-i-do-card:focus-within,
+.what-i-do-card:focus-visible {
+	transform: translateY(-4px) scale(1.01);
+	box-shadow:
+		0 0 0 1px rgba(255, 232, 189, 0.35) inset,
+		0 0 0 3px rgba(217, 176, 96, 0.16),
+		0 30px 56px rgba(168, 125, 58, 0.3);
+}
+
+.what-i-do-card:focus-visible {
+	box-shadow:
+		0 0 0 1px rgba(255, 232, 189, 0.4) inset,
+		0 0 0 3px rgba(217, 176, 96, 0.28),
+		0 30px 56px rgba(168, 125, 58, 0.3);
+}
+
+.what-i-do-card:hover::before,
+.what-i-do-card:focus-within::before,
+.what-i-do-card:focus-visible::before {
+	animation: cardSheenSweep 1.4s cubic-bezier(0.2, 0.82, 0.25, 1) infinite;
+}
+
+.what-i-do-title {
+	position: relative;
+	display: inline-block;
+	transform-origin: left center;
+	will-change: transform;
+	transition:
+		transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		text-shadow 360ms ease;
+}
+
+.what-i-do-title::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 12%;
+	height: 76%;
+	width: 54%;
+	border-radius: 999px;
+	background: rgba(255, 219, 138, 0.26);
+	filter: blur(7px);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateX(-135%) skewX(-20deg) scaleX(1.1);
+}
+
+.what-i-do-card:hover .what-i-do-title,
+.what-i-do-card:focus-within .what-i-do-title,
+.what-i-do-card:focus-visible .what-i-do-title {
+	transform: scale(1.06);
+	text-shadow: 0 0 18px rgba(255, 223, 161, 0.34);
+}
+
+.what-i-do-card:hover .what-i-do-title::after,
+.what-i-do-card:focus-within .what-i-do-title::after,
+.what-i-do-card:focus-visible .what-i-do-title::after {
+	animation: titleWaveSweep 1.2s cubic-bezier(0.2, 0.82, 0.25, 1) infinite;
+}
+
+.what-i-do-card:hover .what-i-do-title-delay,
+.what-i-do-card:focus-within .what-i-do-title-delay,
+.what-i-do-card:focus-visible .what-i-do-title-delay,
+.what-i-do-card:hover .what-i-do-title-delay::after,
+.what-i-do-card:focus-within .what-i-do-title-delay::after,
+.what-i-do-card:focus-visible .what-i-do-title-delay::after {
+	animation-delay: 120ms;
+}
+
+@keyframes serviceCardSheen {
+	0% {
+		opacity: 0;
+		transform: translateX(-150%) skewX(-16deg);
+	}
+
+	22% {
+		opacity: 0.2;
+	}
+
+	70% {
+		opacity: 0.12;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(170%) skewX(-16deg);
+	}
+}
+
+@keyframes serviceIconFloat {
+
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg) scale(1);
+	}
+
+	50% {
+		transform: translateY(-4px) rotate(-4deg) scale(1.06);
+	}
+}
+
+@keyframes serviceTitlePop {
+
+	0%,
+	100% {
+		transform: translateX(0) scale(1);
+		text-shadow: 0 0 0 rgba(255, 229, 178, 0);
+	}
+
+	45% {
+		transform: translateX(4px) scale(1.04);
+		text-shadow: 0 0 18px rgba(255, 229, 178, 0.34);
+	}
+}
+
+.service-card {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	outline: none;
+	transition:
+		transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		box-shadow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+		border-color 260ms ease;
+}
+
+.service-card::after {
+	content: "";
+	position: absolute;
+	inset: -12% 0;
+	width: 38%;
+	z-index: 1;
+	pointer-events: none;
+	background: rgba(255, 227, 166, 0.24);
+	filter: blur(10px);
+	opacity: 0;
+	transform: translateX(-150%) skewX(-16deg);
+}
+
+.service-card:hover,
+.service-card:focus-within,
+.service-card:focus-visible {
+	transform: translateY(-6px);
+	border-color: rgba(234, 196, 126, 0.88);
+	box-shadow:
+		0 0 0 1px rgba(255, 233, 188, 0.26) inset,
+		0 20px 44px rgba(140, 104, 45, 0.26);
+}
+
+.service-card:focus-visible {
+	box-shadow:
+		0 0 0 1px rgba(255, 233, 188, 0.33) inset,
+		0 0 0 3px rgba(221, 179, 98, 0.3),
+		0 20px 44px rgba(140, 104, 45, 0.26);
+}
+
+.service-card:hover::after,
+.service-card:focus-within::after,
+.service-card:focus-visible::after {
+	animation: serviceCardSheen 1.3s cubic-bezier(0.2, 0.82, 0.25, 1) infinite;
+}
+
+.service-card-icon {
+	position: relative;
+	z-index: 2;
+	will-change: transform, filter;
+	transition: filter 260ms ease;
+}
+
+.service-card-title {
+	position: relative;
+	z-index: 2;
+	will-change: transform;
+	transform-origin: left center;
+}
+
+.service-card:hover .service-card-icon,
+.service-card:focus-within .service-card-icon,
+.service-card:focus-visible .service-card-icon {
+	animation: serviceIconFloat 1s ease-in-out infinite;
+	filter: drop-shadow(0 0 10px rgba(255, 223, 154, 0.34));
+}
+
+.service-card:hover .service-card-title,
+.service-card:focus-within .service-card-title,
+.service-card:focus-visible .service-card-title {
+	animation: serviceTitlePop 900ms cubic-bezier(0.2, 0.82, 0.25, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.service-card,
+	.service-card-icon,
+	.service-card-title,
+	.service-card::after {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.service-card:hover,
+	.service-card:focus-within,
+	.service-card:focus-visible {
+		transform: none;
+	}
+}
