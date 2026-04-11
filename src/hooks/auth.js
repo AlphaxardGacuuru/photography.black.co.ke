@@ -1,13 +1,13 @@
 import useSWR from "swr"
 import axios from "@/lib/axios"
 import { useEffect, useState } from "react"
-import { useParams, useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useApp } from "@/contexts/AppContext"
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 	const appProps = useApp()
 	const router = useRouter()
-	const params = useParams()
+	const searchParams = useSearchParams()
 
 	const [authLoading, setAuthLoading] = useState(false)
 
@@ -62,8 +62,8 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 				setAuthLoading(false)
 				appProps.setMessages(["Login Successful!"])
 
-                mutate()
-            })
+				mutate()
+			})
 			.catch((error) => {
 				setAuthLoading(false)
 
@@ -96,7 +96,10 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 		setStatus(null)
 
 		axios
-			.post("/reset-password", { token: params.token, ...props })
+			.post("/reset-password", {
+				token: props.token ?? searchParams.get("token"),
+				...props,
+			})
 			.then((response) =>
 				router.push("/login?reset=" + btoa(response.data.status))
 			)
