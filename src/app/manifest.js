@@ -1,8 +1,8 @@
 export default function manifest() {
 	return {
-		name: "Black Developers",
-		short_name: "Black Developers",
-		description: "Black Developers platform",
+		name: "Black Photography",
+		short_name: "Black Photography",
+		description: "Black Photography platform",
 		start_url: "/",
 		display: "standalone",
 		background_color: "#232323",

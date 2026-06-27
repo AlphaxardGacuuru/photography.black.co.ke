@@ -3,7 +3,7 @@ import AuthCard from "@/app/(auth)/AuthCard"
 import ApplicationLogo from "@/components/ApplicationLogo"
 
 export const metadata = {
-	title: `${process.env.NEXT_PUBLIC_APP_NAME || "Black Developers"} - Login`,
+	title: `${process.env.NEXT_PUBLIC_APP_NAME || "Black Photography"} - Login`,
 }
 
 const Layout = ({ children }) => {

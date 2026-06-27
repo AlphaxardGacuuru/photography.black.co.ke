@@ -50,7 +50,7 @@ const Login = () => {
 					Welcome Back
 				</h2>
 				<p className="text-white/60 font-light font-nunito text-lg">
-					Sign in to continue to Black Developers
+					Sign in to continue to Black Photography
 				</p>
 			</div>
 

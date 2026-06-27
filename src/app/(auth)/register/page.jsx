@@ -37,7 +37,7 @@ const Page = () => {
 					Create Account
 				</h2>
 				<p className="text-white/60 font-light font-nunito text-lg">
-					Sign up to get started with Black Developers
+					Sign up to get started with Black Photography
 				</p>
 			</div>
 
