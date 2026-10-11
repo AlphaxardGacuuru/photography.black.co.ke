@@ -5,7 +5,7 @@ export default function manifest() {
 		description: "Black Photography platform",
 		start_url: "/",
 		display: "standalone",
-		background_color: "#232323",
+		background_color: "#f7cf84",
 		theme_color: "#232323",
 		icons: [
 			{
