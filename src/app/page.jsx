@@ -13,6 +13,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
+import ScrollToTopButton from "@/components/ScrollToTopButton"
 
 const heroSlides = [
 	{
@@ -134,6 +135,7 @@ const HomePage = () => {
 
 	return (
 		<main className="bg-[linear-gradient(180deg,#faf6ef_0%,#f7f1e6_48%,#f8f3ea_100%)] text-[#2f2a24]">
+			<ScrollToTopButton />
 			<section className="relative overflow-hidden border-b border-[#d4b06a] bg-[#f5ede0]">
 				<Carousel
 					setApi={setHeroApi}
