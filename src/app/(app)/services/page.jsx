@@ -70,14 +70,12 @@ const servicePackages = [
 const addOnServices = [
 	{
 		title: "Ruracio Shoot",
-		price: "Ksh 10,000 off",
+		price: "Ksh 30,000",
 		icon: Gift,
 		accent:
 			"bg-[linear-gradient(160deg,rgba(120,20,40,0.68),rgba(180,60,80,0.32))] text-[#fffdf8]",
 		items: [
-			"Ksh 10,000 off any wedding package",
-			"Complimentary session",
-			"Coordinated with your wedding coverage",
+			"Get Ksh 10,000 off any wedding package when booked together",
 		],
 		quote: "The best thing to hold onto in life is each other.",
 	},
