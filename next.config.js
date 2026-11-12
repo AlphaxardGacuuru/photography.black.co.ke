@@ -66,7 +66,12 @@ const nextConfig = {
 	// Optimize images
 	images: {
 		formats: ["image/webp"],
-		minimumCacheTTL: 60,
+		// The photos in public/img are at most 2000px, so never ask the optimiser
+		// for bigger sizes: resizing large photos in parallel pushed the server
+		// process past pm2's 512 MB limit and every image request got a 502.
+		deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+		// Keep optimised images for a month instead of re-resizing every minute.
+		minimumCacheTTL: 60 * 60 * 24 * 30,
 	},
 
 	// Compiler optimizations
